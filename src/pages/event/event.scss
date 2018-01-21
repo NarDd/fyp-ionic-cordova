@@ -1,0 +1,8 @@
+page-event {
+  .swiper-slide:not(.swiper-slide-active) > div {
+    display: none;
+  }
+  .swiper-wrapper {
+    position: relative;
+  }
+}

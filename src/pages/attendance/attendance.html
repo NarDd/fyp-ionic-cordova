@@ -1,0 +1,52 @@
+<!--
+  Generated template for the attendancePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Attendance</ion-title>
+    <ion-buttons end>
+    <button id="btn" (click)="presentProfileModal()">
+      <ion-icon name="contact" id="toProfile"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-title>{{eventstore.event_name}} Dates</ion-title>
+    </ion-col>
+  </ion-row>
+
+  <ion-card *ngFor="let evt of events; let i = index">
+  <ion-card-content>
+    <ion-row>
+      <ion-col>
+        <span>Date: {{evt.date}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+          <button ion-button (click)="onActionButtonClick(evt.id)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>
+        </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+
+</ion-content>

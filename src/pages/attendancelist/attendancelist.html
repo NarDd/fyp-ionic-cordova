@@ -1,0 +1,53 @@
+<!--
+  Generated template for the AttendancelistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Attendance List</ion-title>
+    <ion-buttons end>
+    <button id="btn" (click)="presentProfileModal()">
+      <ion-icon name="contact" id="toProfile"></ion-icon>
+    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-segment [(ngModel)]="User">
+      <ion-segment-button value="Present">
+        Present
+      </ion-segment-button>
+      <ion-segment-button value="Absent">
+        Absent
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="User">
+    <ion-list *ngSwitchCase="'Present'">
+      <ion-item *ngFor="let present of presentevent; let i = index">
+        <ion-label>{{present.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="present[i]" (ionChange)="updateUndoMarked(present.id,present[i],i)" ></ion-checkbox>
+      </ion-item>
+      <button block (click)="undoMarking()" ion-button>Undo Marking</button>
+    </ion-list>
+
+
+
+    <ion-list *ngSwitchCase="'Absent'">
+      <ion-item *ngFor="let absent of absentevent ; let x = index">
+        <ion-label>{{absent.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="absent[x]" (ionChange)="updateMarked(absent.id,absent[x],x)" ></ion-checkbox>
+      </ion-item>
+      <button block ion-button (click)="mark()">Mark Present</button>
+    </ion-list>
+
+  </div>
+</ion-content>
