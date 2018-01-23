@@ -28,34 +28,6 @@ public class BLETransmitter extends CordovaPlugin  {
   private BluetoothAdapter mBluetoothAdapter;
   private int mBLESupported;
 
-  protected void start(final CallbackContext callbackContext, final long secret) {
-    beacon = new Beacon.Builder()
-    .setId1("2f234454-cf6d-4fff-adf2-f4911ba9ffa6")
-    .setId2("1")
-    .setId3("2")
-    .setManufacturer(0x0118)
-    .setTxPower(-59)
-    .setDataFields(Arrays.asList(new Long[]{secret}))
-    .build();
-    beaconParser = new BeaconParser()
-    .setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
-
-    beaconTransmitter = new BeaconTransmitter(this.cordova.getActivity().getApplicationContext(), beaconParser);
-
-    beaconTransmitter.startAdvertising(beacon, new AdvertiseCallback() {
-      @Override
-      public void onStartFailure(int errorCode) {
-        callbackContext.error("Advertisement start failed with code: " + errorCode);
-      }
-
-      @Override
-      public void onStartSuccess(AdvertiseSettings settingsInEffect) {
-        callbackContext.success("Advertisement started: Broadcasting " + secret);
-      }
-    });
-    callbackContext.success("BIG vajayjay");
-  }
-
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     if (mBluetoothAdapter == null) {
@@ -74,9 +46,28 @@ public class BLETransmitter extends CordovaPlugin  {
     }
 
     if (action.equals("start")) {
-      final String arg0 = args.getString(0);
-      final long secret = Long.parseLong(arg0);
-      start(callbackContext,secret);
+      Integer num = args.getInt(0);
+      Long secret = Long.parseLong("" + num);
+      String major = args.getString(1);
+      String minor = args.getString(2);
+
+
+      // final String arg0 = args.getString(0);
+      // final long secret = 9;
+      //
+      // final String major = args.getString(1);
+      // final String minor = args.getString(2);
+      // final JSONArray obj = args.getJSONArray(0);
+      // final String obj = args.getJSONObject(0).toString();
+      // callbackContext.success("the major" + obj.get(1));
+      // Log.i("OBJ MOFO", "obj is " + obj.get(1));
+      // final String major = args.getJSONObject(1).toString();
+      // final String major = majorObj.toString();
+      // final String minor = args.getJSONObject(2).toString();
+      // final String minor = minorObj.toString();
+      // callbackContext.success("the major and minor is " + major + " " + minor);
+
+      start(callbackContext,secret,major,minor);
       return true;
     }
     else if (action.equals("stop")) {
@@ -85,6 +76,36 @@ public class BLETransmitter extends CordovaPlugin  {
       return true;
     }
     return false;
+  }
+
+  protected void start(final CallbackContext callbackContext, final long secret, final String major, final String minor) {
+    beacon = new Beacon.Builder()
+    .setId1("2f234454-cf6d-4fff-adf2-f4911ba9ffa6")
+      .setId2(major)
+      .setId3(minor)
+      .setManufacturer(0x0118)
+      .setTxPower(-59)
+      .setDataFields(Arrays.asList(new Long[]{secret}))
+    .build();
+    beaconParser = new BeaconParser()
+    .setBeaconLayout("m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25");
+
+    beaconTransmitter = new BeaconTransmitter(this.cordova.getActivity().getApplicationContext(), beaconParser);
+
+    beaconTransmitter.startAdvertising(beacon, new AdvertiseCallback() {
+      @Override
+      public void onStartFailure(int errorCode) {
+        callbackContext.error("Advertisement start failed with code: " + errorCode);
+        return;
+      }
+
+      @Override
+      public void onStartSuccess(AdvertiseSettings settingsInEffect) {
+        callbackContext.success("Advertisement started: Broadcasting " + secret);
+        return;
+      }
+    });
+    callbackContext.success("Success");
   }
 
   @Override

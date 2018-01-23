@@ -24,19 +24,21 @@ export class AttendancePage {
   events : any;
   eventstore : any;
   attendance: any;
-  secret : any;
   user : any;
   buttonText: Array<string> = ["I Have Arrived"];
   isDisabled: Array<boolean> = [false];
-  code: String;
   yo: any;
   marked: any;
+
+  secretVal : any;
+  majorVal: any;
+  minorVal: any;
   // isDisabled: Array<boolean> = [true];
 
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
     public navParams: NavParams,
-    public ble: BLE,
+    private ble: BLE,
     public restProvider: RestProvider,
     public storage: Storage,
     public toastCtrl: ToastController) {
@@ -63,7 +65,6 @@ export class AttendancePage {
 
     setData(){
       this.eventstore = this.navParams.get("evt");
-
       this.storage.get("user_id").then((val) =>
       {
         this.user = val;
@@ -78,14 +79,13 @@ export class AttendancePage {
     getSecret(){
       this.restProvider.getSecret(this.eventstore.contact_id)
       .then(data => {
-        this.code = data[0].secret;
-        console.log(this.code);
+        this.secretVal = data[0].secret;
+        this.majorVal = data[0].major;
+        this.minorVal = data[0].minor;
       });
     }
 
     setAttendance(id){
-      console.log("user");
-      console.log(this.user);
       this.restProvider.setAttendance({eventdate: id, user: this.user})
       .then(data => {
         this.marked = true;
@@ -99,9 +99,6 @@ export class AttendancePage {
   }
 
   onActionButtonClick(id){
-    // if (this.buttonText === "Scan") {
-    //   // console.log("the id is " + id);
-    //   //
     this.ble.scan([], 5).subscribe(data => {
     //ALTBeacon uses 0xff to advertise
     var SERVICE_DATA_KEY = '0xff';
@@ -115,7 +112,6 @@ export class AttendancePage {
       MINOR: 2
       DATA: NEW LONG[]{1}
       */
-      //slice for UUID
       var uuidBytes = new Uint8Array(serviceData.slice(4,20));
       var uuid = "";
       var major = "";
@@ -127,54 +123,61 @@ export class AttendancePage {
         if (uuid.length == 8 || uuid.length == 13 || uuid.length == 18 || uuid.length == 23)
         uuid += "-";
       });
-      //can output here the person is near
+
       console.log("the uuid is " + uuid);
-      //API to get the UUID , hardcoded for now
+
       //Currently due to 1 byte beacon layout our major and minor can only be 1 digit long there is 100 possibilities
-      // if(uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6"){
       if(uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6"){
-      var majorBytes = new Uint8Array(serviceData.slice(20,22));
-      console.log({mj : majorBytes});
-      var minorBytes = new Uint8Array(serviceData.slice(22,24));
-      console.log({mi : minorBytes});
+        var majorBytes = new Uint8Array(serviceData.slice(20,22));
+        console.log({mj : majorBytes});
+        var minorBytes = new Uint8Array(serviceData.slice(22,24));
+        console.log({mi : minorBytes});
 
-      //Secret is stored in a long array therefore it is required to parse twice from int8array
-      var secretBytes = new Uint8Array(serviceData.slice(25));
-      var secretBytesArray = new Uint8Array(secretBytes);
-      secretBytesArray.forEach(val => {
-        secret += val.toString(16);
-      });
-      console.log({secret : secret});
+        //Secret is stored in a long array therefore it is required to parse twice from int8array
+        var secretBytes = new Uint8Array(serviceData.slice(25));
+        var secretBytesArray = new Uint8Array(secretBytes);
+        secretBytesArray.forEach(val => {
+          secret += val.toString(16);
+        });
+        console.log({secret : secret});
 
-      majorBytes.forEach(val => {
-        major += val.toString(16);
-      });
+        majorBytes.forEach(val => {
+          major += val.toString(16);
+        });
 
-      //format major
-      if(major.length == 2)
-      major = major.replace(/^[0]/g,"");
+        //format major
+        if(major.length == 2)
+        major = major.replace(/^[0]/g,"");
 
-      minorBytes.forEach(val => {
-        minor += val.toString(16);
-      });
+        minorBytes.forEach(val => {
+          minor += val.toString(16);
+        });
 
-      if(minor.length == 2)
-      minor = minor.replace(/^[0]/g,"");
+        if(minor.length == 2)
+        minor = minor.replace(/^[0]/g,"");
 
-      console.log(this.code);
-      // if(secret == this.code){
-      //   console.log("marked");
-      // }
-      //to change because now hardcoded
-      if(this.code == "79"){
-      this.setAttendance(id);
-    }
-    //check Minor if it is correct
-    console.log("Minor is " + minor);
-    //check Major if it is correct
-    console.log("Major is " + major);
-    //check secreit if it is correct
-    console.log("Secret is " + secret);
+        if(major == this.majorVal){
+          console.log("correct major");
+          console.log(this.majorVal);
+        }
+        if(minor == this.minorVal){
+          console.log("correct major");
+          console.log(this.minorVal);
+        }
+        if(secret == this.secretVal){
+          console.log("correct secret");
+          console.log(this.secretVal);
+        }
+
+        if(this.secretVal == "79" ){
+        this.setAttendance(id);
+      }
+      //check Minor if it is correct
+      console.log("Minor is " + minor);
+      //check Major if it is correct
+      console.log("Major is " + major);
+      //check secreit if it is correct
+      console.log("Secret is " + secret);
   }
 }
 

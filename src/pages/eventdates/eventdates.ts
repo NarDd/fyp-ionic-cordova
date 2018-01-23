@@ -3,7 +3,8 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AttendancelistPage } from '../attendancelist/attendancelist';
 import { ToastController } from 'ionic-angular';
-
+import { ProfilePage } from '../profile/profile';
+import { RestProvider } from '../../providers/rest/rest';
 /**
  * Generated class for the EventdatesPage page.
  *
@@ -20,14 +21,19 @@ export class EventdatesPage {
 
   event : any;
   isToggled: boolean;
+  secret: number;
+  major: string;
+  minor: string;
 
   constructor(public navCtrl: NavController,
-     public navParams: NavParams,
+      public navParams: NavParams,
       public storage: Storage,
       public modalCtrl: ModalController,
       public toastCtrl: ToastController,
+      public restProvider: RestProvider,
     ) {
       this.event = this.navParams.get("evt");
+      this.getSecret();
       this.isToggled = false;
       console.log(this.event);
   }
@@ -42,8 +48,35 @@ export class EventdatesPage {
     }
   }
 
+  presentProfileModal() {
+    this.storage.get('user_id').then((val) => {
+      this.restProvider.getUser(val)
+      .then(data => {
+        let userData = data["user"];
+        console.log(userData);
+        let profileModal = this.modalCtrl.create(ProfilePage, {userData: userData});
+        profileModal.present();
+      });
+    });
+  }
+
+  getSecret(){
+    this.storage.get('user_id').then((val) => {
+      console.log("idid" + val);
+      this.restProvider.getSecret(val)
+      .then(data => {
+        this.secret = data[0].secret;
+        this.major = data[0].major;
+        this.minor = data[0].minor;
+        console.log(this.secret);
+        console.log(this.major);
+        console.log(this.minor);
+      });
+    });
+  }
+
   activateAttendance() {
-    ble.start(79, succ => {
+    ble.start(this.secret,this.major,this.minor, succ => {
       this.toastCtrl.create({
         message: "Attendance marking started successfully",
         duration: 3000
@@ -69,7 +102,6 @@ export class EventdatesPage {
       }
       this.isToggled = false;
     });
-
   }
 
   stopAttendance(){

@@ -34,14 +34,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-ble-central.ble",
-    "file": "plugins/cordova-plugin-ble-central/www/ble.js",
-    "pluginId": "cordova-plugin-ble-central",
-    "clobbers": [
-      "ble"
-    ]
-  },
-  {
     "id": "cordova-plugin-x-toast.Toast",
     "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
     "pluginId": "cordova-plugin-x-toast",
@@ -61,6 +53,14 @@ module.exports = [
     "clobbers": [
       "ble"
     ]
+  },
+  {
+    "id": "cordova-plugin-ble-central.ble",
+    "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+    "pluginId": "cordova-plugin-ble-central",
+    "clobbers": [
+      "ble"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -72,9 +72,9 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-statusbar": "2.3.0",
-  "cordova-plugin-ble-central": "1.1.4",
   "cordova-plugin-x-toast": "2.6.0",
-  "cordova-plugin-altbeacon": "0.0.1"
+  "cordova-plugin-altbeacon": "0.0.1",
+  "cordova-plugin-ble-central": "1.1.4"
 };
 // BOTTOM OF METADATA
 });

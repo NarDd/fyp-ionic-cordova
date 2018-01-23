@@ -25,13 +25,13 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-ble-central": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-x-toast": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "cordova-plugin-altbeacon": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-ble-central": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },

@@ -10,7 +10,7 @@
         "spec": ">=1.0.0 <2.0.0",
         "type": "range"
       },
-      "C:\\Users\\Bernard\\Desktop\\fyp-matchit\\fyp"
+      "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp"
     ]
   ],
   "_from": "cordova-plugin-compat@>=1.0.0 <2.0.0",
@@ -45,7 +45,7 @@
   "_shasum": "0bc65757276ebd920c012ce920e274177576373e",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-compat@^1.0.0",
-  "_where": "C:\\Users\\Bernard\\Desktop\\fyp-matchit\\fyp",
+  "_where": "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp",
   "author": {
     "name": "Apache Software Foundation"
   },

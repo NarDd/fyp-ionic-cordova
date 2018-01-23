@@ -15,11 +15,11 @@ export class RestProvider {
   constructor(public http: Http, public toastCtrl: ToastController) {
     console.log('Hello RestProvider Provider');
   }
-  // apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
-  apiUrl = 'http://nard.site/api/';
+  apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
+  // apiUrl = 'http://nard.site/api/';
   error : any;
 
-  postUndoMarked(present: [], eventid : any) {
+  postUndoMarked(present: any, eventid : any) {
     return new Promise(resolve => {
       this.http.post(this.apiUrl+'undomarked',
       {
@@ -40,7 +40,7 @@ export class RestProvider {
     });
   }
 
-  postMarked(absent: [], eventid : any) {
+  postMarked(absent: any, eventid : any) {
     console.log(absent);
     return new Promise(resolve => {
       this.http.post(this.apiUrl+'marked',

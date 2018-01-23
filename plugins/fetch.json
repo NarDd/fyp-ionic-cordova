@@ -55,14 +55,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-ble-central": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ble-central"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-x-toast": {
     "source": {
       "type": "registry",
@@ -75,6 +67,14 @@
     "source": {
       "type": "local",
       "path": "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp\\node_modules\\cordova-plugin-altbeacon"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ble-central": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ble-central"
     },
     "is_top_level": true,
     "variables": {}

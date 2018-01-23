@@ -6,8 +6,8 @@ exports.enabled = function(success, error) {
     exec(success, error, pluginName, "enabled", []);
 };
 
-exports.start = function(secret, success, error) {
-    exec(success, error, pluginName, "start", [secret]);
+exports.start = function(secret,major,minor , success, error) {
+    exec(success, error, pluginName, "start", [secret, major, minor]);
 };
 
 exports.stop = function(success, error) {

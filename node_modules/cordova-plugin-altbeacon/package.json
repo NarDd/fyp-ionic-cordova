@@ -32,26 +32,26 @@
     "/"
   ],
   "_resolved": "file:..\\..\\cordova-plugin-altbeacon",
-  "_shasum": "7be1444866261fcbcdc6a32a02a672511100aa54",
+  "_shasum": "d6c2391e98f503b82571a233d1dfccab9b0bd65b",
   "_shrinkwrap": null,
   "_spec": "C:\\Users\\Bernard\\Desktop\\cordova-plugin-altbeacon",
   "_where": "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp",
   "author": {
-    "name": "kkontagion"
+    "name": "Bernard Ng"
   },
   "bugs": {
-    "url": "https://github.com/kkontagion/cordova-plugin-librarytag/issues"
+    "url": "https://github.com/NarDd/cordova-plugin-altbeacon.git/issues"
   },
   "dependencies": {},
-  "description": "Provides Cordova-based applications the ability to read a barcode number from a Library RFID tag through NFC-V.",
+  "description": "Provides Cordova-based applications the ability to emit AltBeacon beacon.",
   "devDependencies": {},
-  "homepage": "https://github.com/kkontagion/cordova-plugin-librarytag#readme",
+  "gitHead": "67ce74e251702b61ba59641ca5a51816239a3b57",
+  "homepage": "https://github.com/NarDd/cordova-plugin-altbeacon.git#readme",
   "keywords": [
     "cordova",
     "plugin",
-    "nfcv",
-    "library",
-    "rfid",
+    "altbeacon",
+    "ble",
     "android",
     "javascript"
   ],
@@ -59,11 +59,11 @@
   "main": "www/cordova-plugin-altbeacon.js",
   "name": "cordova-plugin-altbeacon",
   "optionalDependencies": {},
-  "readme": "# Cordova NFCV (Library RFID Tags) plugin\n\nThis plugin lets your app scan a library RFID tag (NFCV) and get the barcode number encoded inside.\n\n## Contents\n* [Installation](#installation)\n* [Usage](#usage)\n* [Credits](#credits)\n\n## Installation\n### PhoneGap Build\nInclude\n\n```\n<plugin name=\"cordova-plugin-librarytag\" spec=\"~1.0.0\"/>\n```\n\n\nin the `config.xml` of your application.\n\n### Cordova CLI\n```\ncordova plugin add cordova-plugin-librarytag\n```\n\n## Usage\n### Events\nThis plugin provides an event listener. In your code, add:\n\n```javascript\ndocument.addEventListener('libraryTagDiscovered', (evt) => {\n    console.log(evt[\"tag\"][0]);\n});\n```\n\n### Methods\nAll methods provided can be found via `nfcv`. If you are using TypeScript, you'll need to add this line on top of each file where you intend to access the plugin:\n\n```typescript\ndeclare const nfcv;\n```\n\nAvailable methods:\n* [nfcv.enabled](#nfcvenabled)\n\n#### nfcv.enabled\n`nfcv.enabled(success, failure)`\n\nChecks for availability of NFC on device. If success callback is called, NFC is available and enabled. If failure callback is called instead, there is string parameter available telling whether device does have no NFC at all (`NO_NFC`) or if it just disabled (`NFC_DISABLED`).\n\n##### Example\n```javascript\nnfcv.enabled(() => alert('NFC enabled'), status => alert(status));\n```\n\n\n## Credits\nThis app was based on [Cordova MiFare Ultralight Plugin](https://github.com/RoopeHakulinen/cordova-plugin-mifare-ultralight).\n",
+  "readme": "# Cordova AltBeacon plugin\n\nThis plugin lets your application to emit an ALTBeacon beacon and allows a secret code of a number to be transmitted.\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kkontagion/cordova-plugin-librarytag.git"
+    "url": "git+https://github.com/NarDd/cordova-plugin-altbeacon.git"
   },
   "scripts": {},
   "version": "0.0.1"

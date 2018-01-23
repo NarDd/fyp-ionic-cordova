@@ -8,10 +8,10 @@ webpackJsonp([0],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_profile__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_rest_rest__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_profile__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_rest_rest__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -100,9 +100,9 @@ var UpcomingPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,10 +210,10 @@ var EventPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PastPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_profile__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event_event__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -301,10 +301,10 @@ var PastPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyeventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__attendance_attendance__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__profile_profile__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__eventdates_eventdates__ = __webpack_require__(208);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -386,7 +386,7 @@ var MyeventPage = (function () {
     };
     MyeventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-myevent',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\myevent\myevent.html"*/'<!--\n  Generated template for the UpcomingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>My Events</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding-horizontal padding-top>\n  <ion-card *ngFor="let evt of events">\n  <ion-slides pager>\n    <ion-slide *ngFor="let photo of evt.photos">\n      <img src="http://bernard.southeastasia.cloudapp.azure.com/eventimg/{{photo.url}}"/>\n    </ion-slide>\n  </ion-slides>\n\n  <ion-card-content>\n    <ion-card-title>\n      {{evt.event_name}}\n    </ion-card-title>\n\n    <ion-row>\n      <ion-col>\n        <span>Location: {{evt.location}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col *ngFor="let evt of evt.eventdates">\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col *ngFor="let evt of evt.eventdates">\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <button block ion-button (click)="toAttendance(evt)" [id]="evt.id" >Mark Attendance</button>\n      </ion-col>\n    </ion-row>\n\n  </ion-card-content>\n</ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\myevent\myevent.html"*/,
+            selector: 'page-myevent',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\myevent\myevent.html"*/'<!--\n  Generated template for the UpcomingPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>My Events</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding-horizontal padding-top>\n  <ion-card *ngFor="let evt of events">\n  <ion-slides pager>\n    <ion-slide *ngFor="let photo of evt.photos">\n      <img src="http://bernard.southeastasia.cloudapp.azure.com/eventimg/{{photo.url}}"/>\n    </ion-slide>\n  </ion-slides>\n\n  <ion-card-content>\n    <ion-card-title>\n      {{evt.event_name}}\n    </ion-card-title>\n\n    <ion-row>\n      <ion-col>\n        <span>Location: {{evt.location}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col *ngFor="let evt of evt.eventdates">\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col *ngFor="let evt of evt.eventdates">\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <button block ion-button (click)="toAttendance(evt)" [id]="evt.id" >Mark Attendance</button>\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf= "isadmin">\n      <ion-col>\n        <button block ion-button (click)="toMyEvent(evt)" [id]="evt.id" >Admin Settings</button>\n      </ion-col>\n    </ion-row>\n\n  </ion-card-content>\n</ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\myevent\myevent.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
@@ -418,24 +418,7 @@ webpackEmptyAsyncContext.id = 122;
 
 /***/ }),
 
-/***/ 163:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 163;
-
-/***/ }),
-
-/***/ 17:
+/***/ 14:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -468,8 +451,7 @@ var RestProvider = (function () {
     function RestProvider(http, toastCtrl) {
         this.http = http;
         this.toastCtrl = toastCtrl;
-        // apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
-        this.apiUrl = 'http://nard.site/api/';
+        this.apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
         console.log('Hello RestProvider Provider');
     }
     RestProvider.prototype.postUndoMarked = function (present, eventid) {
@@ -726,13 +708,29 @@ var RestProvider = (function () {
     };
     RestProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* ToastController */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* ToastController */]])
     ], RestProvider);
     return RestProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=rest.js.map
+
+/***/ }),
+
+/***/ 163:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 163;
 
 /***/ }),
 
@@ -743,7 +741,7 @@ var RestProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(54);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -816,9 +814,9 @@ var RegisterPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_ble__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_profile__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_profile__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -891,14 +889,13 @@ var AttendancePage = (function () {
         var _this = this;
         this.restProvider.getSecret(this.eventstore.contact_id)
             .then(function (data) {
-            _this.code = data[0].secret;
-            console.log(_this.code);
+            _this.secretVal = data[0].secret;
+            _this.majorVal = data[0].major;
+            _this.minorVal = data[0].minor;
         });
     };
     AttendancePage.prototype.setAttendance = function (id) {
         var _this = this;
-        console.log("user");
-        console.log(this.user);
         this.restProvider.setAttendance({ eventdate: id, user: this.user })
             .then(function (data) {
             _this.marked = true;
@@ -912,9 +909,6 @@ var AttendancePage = (function () {
     };
     AttendancePage.prototype.onActionButtonClick = function (id) {
         var _this = this;
-        // if (this.buttonText === "Scan") {
-        //   // console.log("the id is " + id);
-        //   //
         this.ble.scan([], 5).subscribe(function (data) {
             //ALTBeacon uses 0xff to advertise
             var SERVICE_DATA_KEY = '0xff';
@@ -928,7 +922,6 @@ var AttendancePage = (function () {
                 MINOR: 2
                 DATA: NEW LONG[]{1}
                 */
-                //slice for UUID
                 var uuidBytes = new Uint8Array(serviceData.slice(4, 20));
                 var uuid = "";
                 var major = "";
@@ -940,11 +933,8 @@ var AttendancePage = (function () {
                     if (uuid.length == 8 || uuid.length == 13 || uuid.length == 18 || uuid.length == 23)
                         uuid += "-";
                 });
-                //can output here the person is near
                 console.log("the uuid is " + uuid);
-                //API to get the UUID , hardcoded for now
                 //Currently due to 1 byte beacon layout our major and minor can only be 1 digit long there is 100 possibilities
-                // if(uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6"){
                 if (uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6") {
                     var majorBytes = new Uint8Array(serviceData.slice(20, 22));
                     console.log({ mj: majorBytes });
@@ -968,12 +958,19 @@ var AttendancePage = (function () {
                     });
                     if (minor.length == 2)
                         minor = minor.replace(/^[0]/g, "");
-                    console.log(_this.code);
-                    // if(secret == this.code){
-                    //   console.log("marked");
-                    // }
-                    //to change because now hardcoded
-                    if (_this.code == "79") {
+                    if (major == _this.majorVal) {
+                        console.log("correct major");
+                        console.log(_this.majorVal);
+                    }
+                    if (minor == _this.minorVal) {
+                        console.log("correct major");
+                        console.log(_this.minorVal);
+                    }
+                    if (secret == _this.secretVal) {
+                        console.log("correct secret");
+                        console.log(_this.secretVal);
+                    }
+                    if (_this.secretVal == "79") {
                         _this.setAttendance(id);
                     }
                     //check Minor if it is correct
@@ -1020,10 +1017,15 @@ var AttendancePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-attendance',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/'<!--\n  Generated template for the attendancePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Attendance</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-row>\n    <ion-col>\n      <ion-title>{{eventstore.event_name}} Dates</ion-title>\n    </ion-col>\n  </ion-row>\n\n  <ion-card *ngFor="let evt of events; let i = index">\n  <ion-card-content>\n    <ion-row>\n      <ion-col>\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n          <button ion-button (click)="onActionButtonClick(evt.id)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>\n        </ion-col>\n    </ion-row>\n  </ion-card-content>\n</ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_ble__["a" /* BLE */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_ble__["a" /* BLE */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_ble__["a" /* BLE */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], AttendancePage);
     return AttendancePage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=attendance.js.map
@@ -1037,8 +1039,10 @@ var AttendancePage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventdatesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__attendancelist_attendancelist__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1053,14 +1057,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var EventdatesPage = (function () {
-    function EventdatesPage(navCtrl, navParams, storage, modalCtrl, toastCtrl) {
+    function EventdatesPage(navCtrl, navParams, storage, modalCtrl, toastCtrl, restProvider) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.storage = storage;
         this.modalCtrl = modalCtrl;
         this.toastCtrl = toastCtrl;
+        this.restProvider = restProvider;
         this.event = this.navParams.get("evt");
+        this.getSecret();
         this.isToggled = false;
         console.log(this.event);
     }
@@ -1073,9 +1081,36 @@ var EventdatesPage = (function () {
             this.stopAttendance();
         }
     };
+    EventdatesPage.prototype.presentProfileModal = function () {
+        var _this = this;
+        this.storage.get('user_id').then(function (val) {
+            _this.restProvider.getUser(val)
+                .then(function (data) {
+                var userData = data["user"];
+                console.log(userData);
+                var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_4__profile_profile__["a" /* ProfilePage */], { userData: userData });
+                profileModal.present();
+            });
+        });
+    };
+    EventdatesPage.prototype.getSecret = function () {
+        var _this = this;
+        this.storage.get('user_id').then(function (val) {
+            console.log("idid" + val);
+            _this.restProvider.getSecret(val)
+                .then(function (data) {
+                _this.secret = data[0].secret;
+                _this.major = data[0].major;
+                _this.minor = data[0].minor;
+                console.log(_this.secret);
+                console.log(_this.major);
+                console.log(_this.minor);
+            });
+        });
+    };
     EventdatesPage.prototype.activateAttendance = function () {
         var _this = this;
-        ble.start(79, function (succ) {
+        ble.start(this.secret, this.major, this.minor, function (succ) {
             _this.toastCtrl.create({
                 message: "Attendance marking started successfully",
                 duration: 3000
@@ -1119,7 +1154,8 @@ var EventdatesPage = (function () {
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_rest_rest__["a" /* RestProvider */]])
     ], EventdatesPage);
     return EventdatesPage;
 }());
@@ -1135,9 +1171,9 @@ var EventdatesPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AttendancelistPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1248,10 +1284,13 @@ var AttendancelistPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-attendancelist',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendancelist\attendancelist.html"*/'<!--\n  Generated template for the AttendancelistPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Attendance List</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div>\n    <ion-segment [(ngModel)]="User">\n      <ion-segment-button value="Present">\n        Present\n      </ion-segment-button>\n      <ion-segment-button value="Absent">\n        Absent\n      </ion-segment-button>\n    </ion-segment>\n  </div>\n\n  <div [ngSwitch]="User">\n    <ion-list *ngSwitchCase="\'Present\'">\n      <ion-item *ngFor="let present of presentevent; let i = index">\n        <ion-label>{{present.name}}</ion-label>\n        <ion-checkbox [(ngModel)]="present[i]" (ionChange)="updateUndoMarked(present.id,present[i],i)" ></ion-checkbox>\n      </ion-item>\n      <button block (click)="undoMarking()" ion-button>Undo Marking</button>\n    </ion-list>\n\n\n\n    <ion-list *ngSwitchCase="\'Absent\'">\n      <ion-item *ngFor="let absent of absentevent ; let x = index">\n        <ion-label>{{absent.name}}</ion-label>\n        <ion-checkbox [(ngModel)]="absent[x]" (ionChange)="updateMarked(absent.id,absent[x],x)" ></ion-checkbox>\n      </ion-item>\n      <button block ion-button (click)="mark()">Mark Present</button>\n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendancelist\attendancelist.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]])
     ], AttendancelistPage);
     return AttendancelistPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=attendancelist.js.map
@@ -1272,6 +1311,69 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
+/***/ 23:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(54);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ProfilePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ProfilePage = (function () {
+    function ProfilePage(navCtrl, navParams, restProvider, storage, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.restProvider = restProvider;
+        this.storage = storage;
+        this.viewCtrl = viewCtrl;
+        console.log('UserId');
+        this.userData = this.navParams.get("userData");
+    }
+    ProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProfilePage');
+    };
+    ProfilePage.prototype.logout = function () {
+        this.storage.remove(this.userData);
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__login_login__["a" /* LoginPage */]);
+    };
+    ProfilePage.prototype.dismiss = function () {
+        this.viewCtrl.dismiss();
+    };
+    ProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\profile\profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-toolbar>\n     <ion-title>\n       Profile\n     </ion-title>\n     <ion-buttons start>\n       <button ion-button (click)="dismiss()">\n         <span ion-text color="primary" showWhen="ios">Cancel</span>\n         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n       </button>\n     </ion-buttons>\n   </ion-toolbar>\n\n</ion-header>\n\n\n<ion-content padding-top padding-horizontal>\n\n<ion-row>\n  Name: {{userData.name}}\n</ion-row>\n\n<ion-row>\n  Email: {{userData.email}}\n</ion-row>\n\n<ion-row>\n  Skills:\n  <ion-col>\n    <ion-row *ngFor="let skill of userData.skills">\n        {{skill.skill_name}}\n    </ion-row>\n  </ion-col>\n</ion-row>\n\n<ion-row>\n  <ion-col>\n      <button ion-button class="btn" (click)="logout()" color="light" block>Logout</button>\n  </ion-col>\n</ion-row>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\profile\profile.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
+    ], ProfilePage);
+    return ProfilePage;
+}());
+
+//# sourceMappingURL=profile.js.map
+
+/***/ }),
+
 /***/ 234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1280,12 +1382,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_login_login__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_register_register__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_profile_profile__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_upcoming_upcoming__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_past_past__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_event_event__ = __webpack_require__(106);
@@ -1298,7 +1400,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__ionic_native_ble__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_rest_rest__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_rest_rest__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1472,69 +1574,6 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 29:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(54);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ProfilePage = (function () {
-    function ProfilePage(navCtrl, navParams, restProvider, storage, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.restProvider = restProvider;
-        this.storage = storage;
-        this.viewCtrl = viewCtrl;
-        console.log('UserId');
-        this.userData = this.navParams.get("userData");
-    }
-    ProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ProfilePage');
-    };
-    ProfilePage.prototype.logout = function () {
-        this.storage.remove(this.userData);
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__login_login__["a" /* LoginPage */]);
-    };
-    ProfilePage.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    ProfilePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\profile\profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-toolbar>\n     <ion-title>\n       Profile\n     </ion-title>\n     <ion-buttons start>\n       <button ion-button (click)="dismiss()">\n         <span ion-text color="primary" showWhen="ios">Cancel</span>\n         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>\n       </button>\n     </ion-buttons>\n   </ion-toolbar>\n\n</ion-header>\n\n\n<ion-content padding-top padding-horizontal>\n\n<ion-row>\n  Name: {{userData.name}}\n</ion-row>\n\n<ion-row>\n  Email: {{userData.email}}\n</ion-row>\n\n<ion-row>\n  Skills:\n  <ion-col>\n    <ion-row *ngFor="let skill of userData.skills">\n        {{skill.skill_name}}\n    </ion-row>\n  </ion-col>\n</ion-row>\n\n<ion-row>\n  <ion-col>\n      <button ion-button class="btn" (click)="logout()" color="light" block>Logout</button>\n  </ion-col>\n</ion-row>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\profile\profile.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
-    ], ProfilePage);
-    return ProfilePage;
-}());
-
-//# sourceMappingURL=profile.js.map
-
-/***/ }),
-
 /***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1544,10 +1583,10 @@ var ProfilePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__upcoming_upcoming__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__past_past__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_profile__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__myevent_myevent__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_rest_rest__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_storage__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_rest_rest__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1629,8 +1668,8 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_register__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

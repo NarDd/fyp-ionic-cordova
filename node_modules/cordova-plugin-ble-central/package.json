@@ -10,7 +10,7 @@
         "spec": "latest",
         "type": "tag"
       },
-      "C:\\Users\\Bernard\\Desktop\\fyp-matchit\\fyp"
+      "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp"
     ]
   ],
   "_from": "cordova-plugin-ble-central@latest",
@@ -45,7 +45,7 @@
   "_shasum": "ad90369a795ad700a1b9fdd66e19e7ce44a789c3",
   "_shrinkwrap": null,
   "_spec": "cordova-plugin-ble-central",
-  "_where": "C:\\Users\\Bernard\\Desktop\\fyp-matchit\\fyp",
+  "_where": "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp",
   "author": {
     "name": "Don Coleman",
     "email": "don.coleman@gmail.com"
