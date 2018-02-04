@@ -14,35 +14,68 @@ import { LoginPage } from '../login/login'
 export class RegisterPage {
   // error;
   // responseData : any;
-  userData = {"username":"","password":"","email":"","name":"", "cfmpassword":""}
+
+  userData = {"username":"","password":"","email":"","name":"", "cfmpassword":"", "company":""}
+  companies : any;
+
+
   // constructor(public navCtrl: NavController, public AuthServiceProvider: AuthServiceProvider) {
   constructor(public navCtrl: NavController,public restProvider: RestProvider,public toastCtrl: ToastController) {
+    this.getCompanies();
   }
 
-registerUser(){
-  if(this.userData.cfmpassword == this.userData.password){
-    // console.log(this.userData);
-    this.restProvider.register(this.userData).then((result) => {
-      console.log(result);
-      this.navCtrl.setRoot(LoginPage);
+
+  getCompanies(){
+    this.restProvider.getCompanies().then((result) => {
+      console.log(result.companies);
+      this.companies = result.companies;
+      console.log(this.companies);
     }, (err) => {
       console.log(err);
     });
   }
-  else{
-    this.toastCtrl.create({
-      message: "Password Mismatched",
-      duration: 3000
-    }).present();
+
+  registerUser(){
+      if(this.userData.cfmpassword == this.userData.password){
+        if(this.userData.corporate){
+          if(this.userData.company != null){
+            this.restProvider.register(this.userData).then((result) => {
+              console.log(result);
+              this.navCtrl.setRoot(LoginPage);
+            }, (err) => {
+              console.log(err);
+            });
+          }
+          else{
+            this.toastCtrl.create({
+              message: "Please select a company",
+              duration: 3000
+            }).present();
+          }
+        }
+        else{
+          this.restProvider.register(this.userData).then((result) => {
+            console.log(result);
+            this.navCtrl.setRoot(LoginPage);
+          }, (err) => {
+            console.log(err);
+          });
+        }
+
+      }
+      else{
+        this.toastCtrl.create({
+          message: "Password Mismatched",
+          duration: 3000
+        }).present();
+      }
+
   }
 
-}
-
-backWelcome(){
-    this.navCtrl.push(LoginPage);
-}
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  backWelcome(){
+      this.navCtrl.push(LoginPage);
   }
-
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad RegisterPage');
+    }
 }

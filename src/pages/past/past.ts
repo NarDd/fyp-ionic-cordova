@@ -25,9 +25,21 @@ export class PastPage {
     ) {
     this.getPastEvent();
   }
+  getPastEvent() {
+    this.storage.get('user_id').then((val) => {
+      this.restProvider.getPastEvents(val)
+      .then(data => {
+        this.events = data;
+        console.log(this.events);
+      });
+    });
+  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PastPage');
+  viewEvent(evt){
+    this.navCtrl.push(EventPage, {
+      evt: evt,
+      expired: false
+    });
   }
 
   presentProfileModal() {
@@ -40,26 +52,6 @@ export class PastPage {
         profileModal.present();
       });
     });
-  }
-
-  getPastEvent() {
-    this.restProvider.getPastEvent()
-    .then(data => {
-      this.events = data;
-      console.log(this.events);
-    });
-  }
-
-  viewEvent(evt){
-    console.log(evt);
-    this.navCtrl.push(EventPage, {
-      evt: evt,
-      expired: false
-    });
-  }
-
-  toProfile(){
-    this.navCtrl.push(ProfilePage);
   }
 
 }

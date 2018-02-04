@@ -39,7 +39,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"cordova-plugin-altbeacon\"><param name=\"android-package\" value=\"com.bernard.BLETransmitter\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"cordova-plugin-altbeacon-marking\"><param name=\"android-package\" value=\"com.bernard.BLETransmitter\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -49,11 +49,11 @@
         "parents": {
           "/manifest": [
             {
-              "xml": "<uses-feature android:name=\"android.hardware.bluetooth\" android:required=\"false\" />",
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
               "count": 1
             },
             {
@@ -61,7 +61,7 @@
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+              "xml": "<uses-feature android:name=\"android.hardware.bluetooth\" android:required=\"false\" />",
               "count": 1
             }
           ]
@@ -91,10 +91,10 @@
     "cordova-plugin-x-toast": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-altbeacon": {
+    "cordova-plugin-ble-central": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-ble-central": {
+    "cordova-plugin-altbeacon-marking": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
@@ -147,17 +147,17 @@
       "pluginId": "cordova-plugin-x-toast"
     },
     {
-      "id": "cordova-plugin-altbeacon.ble",
-      "file": "plugins/cordova-plugin-altbeacon/www/cordova-plugin-altbeacon.js",
-      "pluginId": "cordova-plugin-altbeacon",
+      "id": "cordova-plugin-ble-central.ble",
+      "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+      "pluginId": "cordova-plugin-ble-central",
       "clobbers": [
         "ble"
       ]
     },
     {
-      "id": "cordova-plugin-ble-central.ble",
-      "file": "plugins/cordova-plugin-ble-central/www/ble.js",
-      "pluginId": "cordova-plugin-ble-central",
+      "id": "cordova-plugin-altbeacon-marking.ble",
+      "file": "plugins/cordova-plugin-altbeacon-marking/www/cordova-plugin-altbeacon-marking.js",
+      "pluginId": "cordova-plugin-altbeacon-marking",
       "clobbers": [
         "ble"
       ]
@@ -171,7 +171,7 @@
     "cordova-plugin-ionic-webview": "1.1.16",
     "cordova-plugin-statusbar": "2.3.0",
     "cordova-plugin-x-toast": "2.6.0",
-    "cordova-plugin-altbeacon": "0.0.1",
-    "cordova-plugin-ble-central": "1.1.4"
+    "cordova-plugin-ble-central": "1.1.4",
+    "cordova-plugin-altbeacon-marking": "0.0.2"
   }
 }

@@ -47,17 +47,17 @@ module.exports = [
     "pluginId": "cordova-plugin-x-toast"
   },
   {
-    "id": "cordova-plugin-altbeacon.ble",
-    "file": "plugins/cordova-plugin-altbeacon/www/cordova-plugin-altbeacon.js",
-    "pluginId": "cordova-plugin-altbeacon",
+    "id": "cordova-plugin-ble-central.ble",
+    "file": "plugins/cordova-plugin-ble-central/www/ble.js",
+    "pluginId": "cordova-plugin-ble-central",
     "clobbers": [
       "ble"
     ]
   },
   {
-    "id": "cordova-plugin-ble-central.ble",
-    "file": "plugins/cordova-plugin-ble-central/www/ble.js",
-    "pluginId": "cordova-plugin-ble-central",
+    "id": "cordova-plugin-altbeacon-marking.ble",
+    "file": "plugins/cordova-plugin-altbeacon-marking/www/cordova-plugin-altbeacon-marking.js",
+    "pluginId": "cordova-plugin-altbeacon-marking",
     "clobbers": [
       "ble"
     ]
@@ -73,8 +73,8 @@ module.exports.metadata =
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-statusbar": "2.3.0",
   "cordova-plugin-x-toast": "2.6.0",
-  "cordova-plugin-altbeacon": "0.0.1",
-  "cordova-plugin-ble-central": "1.1.4"
+  "cordova-plugin-ble-central": "1.1.4",
+  "cordova-plugin-altbeacon-marking": "0.0.2"
 };
 // BOTTOM OF METADATA
 });

@@ -42,7 +42,6 @@ export class AttendancePage {
     public restProvider: RestProvider,
     public storage: Storage,
     public toastCtrl: ToastController) {
-      // constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public storage: Storage) {
       this.setData();
       this.getSecret();
     }
@@ -70,8 +69,15 @@ export class AttendancePage {
         this.user = val;
         this.restProvider.getCurrentEvent(this.eventstore.id,val)
         .then(data => {
+          console.log("in");
           console.log(data);
           this.events = data;
+
+          for(var i = 0 ; i < data[0].attendance.length; i++){
+            if(data[0].attendance[i].attendance == true){
+              this.isDisabled[i] = true;
+            }
+          }
         });
       });
     }
@@ -85,12 +91,13 @@ export class AttendancePage {
       });
     }
 
-    setAttendance(id){
+    setAttendance(id,btnID){
       this.restProvider.setAttendance({eventdate: id, user: this.user})
       .then(data => {
         this.marked = true;
-        this.buttonText[0] = 'Attendance Marked';
-        //i think remove button and display attendance marked better when it is like marked
+        this.buttonText[btnID] = 'Attendance Marked';
+        this.isDisabled[btnID] = true;
+
         this.toastCtrl.create({
         message: "Attendance Marked",
         duration: 3000
@@ -98,36 +105,38 @@ export class AttendancePage {
     });
   }
 
-  onActionButtonClick(id){
+  onActionButtonClick(id, btnID){
+    var beaconFound = false;
     this.ble.scan([], 5).subscribe(data => {
-    //ALTBeacon uses 0xff to advertise
-    var SERVICE_DATA_KEY = '0xff';
-    var advertisingData = this.parseAdvertisingData(data.advertising);
-    var serviceData = advertisingData[SERVICE_DATA_KEY];
-    if (typeof serviceData !== null && serviceData !== undefined) {
-      /* beacon layout
-      m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25
-      UUID: 2f234454-cf6d-4fff-adf2-f4911ba9ffa6
-      MAJOR: 1
-      MINOR: 2
-      DATA: NEW LONG[]{1}
-      */
-      var uuidBytes = new Uint8Array(serviceData.slice(4,20));
-      var uuid = "";
-      var major = "";
-      var minor = "";
-      var secret = "";
-      uuidBytes.forEach(val => {
-        uuid += val.toString(16);
-        //UUID Formatting
-        if (uuid.length == 8 || uuid.length == 13 || uuid.length == 18 || uuid.length == 23)
-        uuid += "-";
-      });
+      //ALTBeacon uses 0xff to advertise
+      var SERVICE_DATA_KEY = '0xff';
+      var advertisingData = this.parseAdvertisingData(data.advertising);
+      var serviceData = advertisingData[SERVICE_DATA_KEY];
 
-      console.log("the uuid is " + uuid);
+      if (typeof serviceData !== null && serviceData !== undefined) {
+        /* beacon layout
+        m:2-3=beac,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25
+        UUID: 2f234454-cf6d-4fff-adf2-f4911ba9ffa6
+        MAJOR: 1
+        MINOR: 2
+        DATA: NEW LONG[]{1}
+        */
+        var uuidBytes = new Uint8Array(serviceData.slice(4,20));
+        var uuid = "";
+        var major = "";
+        var minor = "";
+        var secret = "";
+        uuidBytes.forEach(val => {
+          uuid += val.toString(16);
+          //UUID Formatting
+          if (uuid.length == 8 || uuid.length == 13 || uuid.length == 18 || uuid.length == 23)
+          uuid += "-";
+        });
 
-      //Currently due to 1 byte beacon layout our major and minor can only be 1 digit long there is 100 possibilities
-      if(uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6"){
+        console.log("the uuid is " + uuid);
+
+        //Currently due to 1 byte beacon layout our major and minor can only be 1 digit long there is 100 possibilities
+        if(uuid === "2f234454-cf6d-4fff-adf2-f4911ba9ffa6"){
         var majorBytes = new Uint8Array(serviceData.slice(20,22));
         console.log({mj : majorBytes});
         var minorBytes = new Uint8Array(serviceData.slice(22,24));
@@ -156,37 +165,33 @@ export class AttendancePage {
         if(minor.length == 2)
         minor = minor.replace(/^[0]/g,"");
 
-        if(major == this.majorVal){
-          console.log("correct major");
-          console.log(this.majorVal);
-        }
-        if(minor == this.minorVal){
-          console.log("correct major");
-          console.log(this.minorVal);
-        }
-        if(secret == this.secretVal){
-          console.log("correct secret");
-          console.log(this.secretVal);
-        }
-
-        if(this.secretVal == "79" ){
-        this.setAttendance(id);
+        if(secret == this.secretVal && minor == this.minorVal && major == this.majorVal){
+        console.log("found " + secret + " db receive secret is" + this.secretVal + " minor " + minor + " db receive minor is" + this.minorVal + " major " + major + " db receive major is" + this.majorVal);
+        this.setAttendance(id,btnID);
+        beaconFound  = true;
       }
-      //check Minor if it is correct
-      console.log("Minor is " + minor);
-      //check Major if it is correct
-      console.log("Major is " + major);
-      //check secreit if it is correct
-      console.log("Secret is " + secret);
-  }
-}
 
+    }
+
+    //check Minor if it is correct
+    console.log("Minor is " + minor);
+    //check Major if it is correct
+    console.log("Major is " + major);
+    //check secreit if it is correct
+    console.log("Secret is " + secret);
+  }
+
+
+}, err => {}, () => {
+  if(beaconFound == false){
+    this.toastCtrl.create({
+      message: "Unable to mark attendance, try moving closer to contact person or inform contact person.",
+      duration: 5000
+    }).present();
+  }
 });
-// this.buttonText = "Stop Scan";
-// }
-// else {
-//   this.buttonText = "Scan";
-// }
+
+
 }
 
 asHexString(i) {

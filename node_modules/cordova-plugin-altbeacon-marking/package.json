@@ -1,0 +1,90 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-altbeacon-marking",
+        "scope": null,
+        "escapedName": "cordova-plugin-altbeacon-marking",
+        "name": "cordova-plugin-altbeacon-marking",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp"
+    ]
+  ],
+  "_from": "cordova-plugin-altbeacon-marking@latest",
+  "_id": "cordova-plugin-altbeacon-marking@0.0.2",
+  "_inCache": true,
+  "_location": "/cordova-plugin-altbeacon-marking",
+  "_nodeVersion": "6.11.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-altbeacon-marking-0.0.2.tgz_1516864046333_0.5329055266920477"
+  },
+  "_npmUser": {
+    "name": "nardd",
+    "email": "bernardng.kf@gmail.com"
+  },
+  "_npmVersion": "4.1.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-altbeacon-marking",
+    "scope": null,
+    "escapedName": "cordova-plugin-altbeacon-marking",
+    "name": "cordova-plugin-altbeacon-marking",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-altbeacon-marking/-/cordova-plugin-altbeacon-marking-0.0.2.tgz",
+  "_shasum": "189a41fc80f95edbd510227bf381843e5ffe7724",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-altbeacon-marking",
+  "_where": "C:\\Users\\Bernard\\Desktop\\fyp-ionic\\fyp",
+  "author": {
+    "name": "nardd"
+  },
+  "bugs": {
+    "url": "https://github.com/NarDd/cordova-plugin-altbeacon.git/issues"
+  },
+  "dependencies": {},
+  "description": "Provides Cordova-based applications the ability to emit AltBeacon beacon.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "189a41fc80f95edbd510227bf381843e5ffe7724",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-altbeacon-marking/-/cordova-plugin-altbeacon-marking-0.0.2.tgz"
+  },
+  "gitHead": "839495eb5191d0c1cf123319bff3475900e421de",
+  "homepage": "https://github.com/NarDd/cordova-plugin-altbeacon.git#readme",
+  "keywords": [
+    "cordova",
+    "plugin",
+    "altbeacon",
+    "ble",
+    "android",
+    "javascript"
+  ],
+  "license": "MIT",
+  "main": "www/cordova-plugin-altbeacon-marking.js",
+  "maintainers": [
+    {
+      "name": "nardd",
+      "email": "bernardng.kf@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-altbeacon-marking",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NarDd/cordova-plugin-altbeacon.git"
+  },
+  "scripts": {},
+  "version": "0.0.2"
+}

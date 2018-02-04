@@ -43,6 +43,26 @@ var UpcomingPage = (function () {
         this.modalCtrl = modalCtrl;
         this.getUpcoming();
     }
+    UpcomingPage.prototype.getUpcoming = function () {
+        var _this = this;
+        this.storage.get('user_id').then(function (val) {
+            _this.restProvider.getUpcoming(val)
+                .then(function (data) {
+                _this.events = data;
+                console.log(_this.events);
+            });
+        });
+    };
+    UpcomingPage.prototype.showHomePage = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+    };
+    UpcomingPage.prototype.viewEvent = function (evt) {
+        console.log(evt);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], {
+            evt: evt,
+            expired: true
+        });
+    };
     UpcomingPage.prototype.presentProfileModal = function () {
         var _this = this;
         this.storage.get('user_id').then(function (val) {
@@ -53,27 +73,6 @@ var UpcomingPage = (function () {
                 var profileModal = _this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_5__profile_profile__["a" /* ProfilePage */], { userData: userData });
                 profileModal.present();
             });
-        });
-    };
-    UpcomingPage.prototype.getUpcoming = function () {
-        var _this = this;
-        this.restProvider.getUpcoming()
-            .then(function (data) {
-            _this.events = data;
-            console.log(_this.events);
-        });
-    };
-    UpcomingPage.prototype.showHomePage = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
-    };
-    UpcomingPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad UpcomingPage');
-    };
-    UpcomingPage.prototype.viewEvent = function (evt) {
-        console.log(evt);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], {
-            evt: evt,
-            expired: true
         });
     };
     UpcomingPage = __decorate([
@@ -244,8 +243,21 @@ var PastPage = (function () {
         this.modalCtrl = modalCtrl;
         this.getPastEvent();
     }
-    PastPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PastPage');
+    PastPage.prototype.getPastEvent = function () {
+        var _this = this;
+        this.storage.get('user_id').then(function (val) {
+            _this.restProvider.getPastEvents(val)
+                .then(function (data) {
+                _this.events = data;
+                console.log(_this.events);
+            });
+        });
+    };
+    PastPage.prototype.viewEvent = function (evt) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], {
+            evt: evt,
+            expired: false
+        });
     };
     PastPage.prototype.presentProfileModal = function () {
         var _this = this;
@@ -258,24 +270,6 @@ var PastPage = (function () {
                 profileModal.present();
             });
         });
-    };
-    PastPage.prototype.getPastEvent = function () {
-        var _this = this;
-        this.restProvider.getPastEvent()
-            .then(function (data) {
-            _this.events = data;
-            console.log(_this.events);
-        });
-    };
-    PastPage.prototype.viewEvent = function (evt) {
-        console.log(evt);
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__event_event__["a" /* EventPage */], {
-            evt: evt,
-            expired: false
-        });
-    };
-    PastPage.prototype.toProfile = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__profile_profile__["a" /* ProfilePage */]);
     };
     PastPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -451,9 +445,68 @@ var RestProvider = (function () {
     function RestProvider(http, toastCtrl) {
         this.http = http;
         this.toastCtrl = toastCtrl;
-        this.apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
+        // apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
+        this.apiUrl = 'http://nard.site/api/';
         console.log('Hello RestProvider Provider');
     }
+    //Before Login
+    RestProvider.prototype.postSignIn = function (user) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.post(_this.apiUrl + 'signin', {
+                email: user.email,
+                password: user.password
+            }).map(function (res) { return res.json(); }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                _this.error = JSON.parse(err._body);
+                _this.toastCtrl.create({
+                    message: _this.error.errors,
+                    duration: 3000
+                }).present();
+            });
+        });
+    };
+    RestProvider.prototype.getCompanies = function () {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'companies').map(function (res) { return res.json(); }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                _this.toastCtrl.create({
+                    message: "An Error Has Occured",
+                    duration: 3000
+                }).present();
+            });
+        });
+    };
+    //Get Event Pages
+    RestProvider.prototype.getUpcoming = function (user_id) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'upcoming' + "/" + user_id).map(function (res) { return res.json(); }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                _this.toastCtrl.create({
+                    message: "An Error Has Occured",
+                    duration: 3000
+                }).present();
+            });
+        });
+    };
+    RestProvider.prototype.getPastEvents = function (user_id) {
+        var _this = this;
+        return new Promise(function (resolve) {
+            _this.http.get(_this.apiUrl + 'pastevents' + "/" + user_id).map(function (res) { return res.json(); }).subscribe(function (data) {
+                resolve(data);
+            }, function (err) {
+                _this.toastCtrl.create({
+                    message: "An Error Has Occured",
+                    duration: 3000
+                }).present();
+            });
+        });
+    };
     RestProvider.prototype.postUndoMarked = function (present, eventid) {
         var _this = this;
         return new Promise(function (resolve) {
@@ -495,19 +548,6 @@ var RestProvider = (function () {
             });
         });
     };
-    RestProvider.prototype.getUpcoming = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            _this.http.get(_this.apiUrl + 'upcoming').map(function (res) { return res.json(); }).subscribe(function (data) {
-                resolve(data);
-            }, function (err) {
-                _this.toastCtrl.create({
-                    message: "An Error Has Occured",
-                    duration: 3000
-                }).present();
-            });
-        });
-    };
     RestProvider.prototype.getSecret = function (id) {
         var _this = this;
         return new Promise(function (resolve) {
@@ -535,26 +575,15 @@ var RestProvider = (function () {
             });
         });
     };
-    RestProvider.prototype.getPastEvent = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            _this.http.get(_this.apiUrl + 'pastevents').map(function (res) { return res.json(); }).subscribe(function (data) {
-                resolve(data);
-            }, function (err) {
-                _this.toastCtrl.create({
-                    message: "An Error Has Occured",
-                    duration: 3000
-                }).present();
-            });
-        });
-    };
     RestProvider.prototype.register = function (userData) {
         var _this = this;
         return new Promise(function (resolve) {
             _this.http.post(_this.apiUrl + 'register', {
                 email: userData.email,
                 password: userData.password,
-                name: userData.name
+                name: userData.name,
+                corporate: userData.corporate,
+                company: userData.company,
             }).map(function (res) { return res.json(); }).subscribe(function (data) {
                 resolve(data);
             }, function (err) {
@@ -655,24 +684,6 @@ var RestProvider = (function () {
             });
         });
     };
-    RestProvider.prototype.signIn = function (user) {
-        var _this = this;
-        console.log(user);
-        return new Promise(function (resolve) {
-            _this.http.post(_this.apiUrl + 'signin', {
-                email: user.email,
-                password: user.password
-            }).map(function (res) { return res.json(); }).subscribe(function (data) {
-                resolve(data);
-            }, function (err) {
-                _this.error = JSON.parse(err._body);
-                _this.toastCtrl.create({
-                    message: _this.error.errors,
-                    duration: 3000
-                }).present();
-            });
-        });
-    };
     RestProvider.prototype.getUser = function (val) {
         var _this = this;
         return new Promise(function (resolve) {
@@ -767,18 +778,46 @@ var RegisterPage = (function () {
         this.toastCtrl = toastCtrl;
         // error;
         // responseData : any;
-        this.userData = { "username": "", "password": "", "email": "", "name": "", "cfmpassword": "" };
+        this.userData = { "username": "", "password": "", "email": "", "name": "", "cfmpassword": "", "company": "" };
+        this.getCompanies();
     }
+    RegisterPage.prototype.getCompanies = function () {
+        var _this = this;
+        this.restProvider.getCompanies().then(function (result) {
+            console.log(result.companies);
+            _this.companies = result.companies;
+            console.log(_this.companies);
+        }, function (err) {
+            console.log(err);
+        });
+    };
     RegisterPage.prototype.registerUser = function () {
         var _this = this;
         if (this.userData.cfmpassword == this.userData.password) {
-            // console.log(this.userData);
-            this.restProvider.register(this.userData).then(function (result) {
-                console.log(result);
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);
-            }, function (err) {
-                console.log(err);
-            });
+            if (this.userData.corporate) {
+                if (this.userData.company != null) {
+                    this.restProvider.register(this.userData).then(function (result) {
+                        console.log(result);
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);
+                    }, function (err) {
+                        console.log(err);
+                    });
+                }
+                else {
+                    this.toastCtrl.create({
+                        message: "Please select a company",
+                        duration: 3000
+                    }).present();
+                }
+            }
+            else {
+                this.restProvider.register(this.userData).then(function (result) {
+                    console.log(result);
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__login_login__["a" /* LoginPage */]);
+                }, function (err) {
+                    console.log(err);
+                });
+            }
         }
         else {
             this.toastCtrl.create({
@@ -795,11 +834,12 @@ var RegisterPage = (function () {
     };
     RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\register\register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top class="background" [attr.noScroll]="shouldScroll">\n<!-- <ion-img src="../../assets/icon/MatchIt_Logo.png"></ion-img> -->\n  <!-- <button class="btn" ion-button color="primary" block>\n  <ion-icon name="logo-facebook"></ion-icon>\n  <div padding-left>Signup with Facebook</div>\n  </button> -->\n\n  <!-- <p class="ptxt">or</p> -->\n\n  <div class="divclass">\n\n  <ion-item>\n    <ion-label><ion-icon floating name="mail"></ion-icon></ion-label>\n    <ion-input type="text" placeholder="Email Address" [(ngModel)]="userData.email" block outline></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>\n    <ion-input class="text" type="Password" placeholder="Password" [(ngModel)]="userData.password" block outline></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>\n    <ion-input class="text" type="Password" placeholder="Password"  [(ngModel)]="userData.cfmpassword" block outline></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label><ion-icon floating name="happy"></ion-icon></ion-label>\n    <ion-input type="text" placeholder="Full Name" [(ngModel)]="userData.name" block outline></ion-input>\n  </ion-item>\n\n  </div>\n  <br>\n  <ion-label color="danger" class="errormsg">{{error}}</ion-label>\n  <br>\n  <button ion-button class="btn" (click)="registerUser()" color="light" block>Register</button>\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\register\register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\register\register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding-top class="background" [attr.noScroll]="shouldScroll">\n<!-- <ion-img src="../../assets/icon/MatchIt_Logo.png"></ion-img> -->\n  <!-- <button class="btn" ion-button color="primary" block>\n  <ion-icon name="logo-facebook"></ion-icon>\n  <div padding-left>Signup with Facebook</div>\n  </button> -->\n\n  <!-- <p class="ptxt">or</p> -->\n\n\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title>\n        Registration\n      </ion-card-title>\n\n\n      <ion-row>\n        <ion-item>\n          <ion-label>Corporate Account?</ion-label>\n          <ion-checkbox [(ngModel)]="userData.corporate" ></ion-checkbox>\n        </ion-item>\n      </ion-row>\n      <br>\n\n      <ion-row>\n        <ion-item *ngIf="userData.corporate">\n        <ion-label>Select Company</ion-label>\n        <ion-select [(ngModel)]="userData.company">\n            <ion-option *ngFor="let companynames of companies" [value]="companynames.id">{{companynames.name}}</ion-option>\n        </ion-select>\n        </ion-item>\n      </ion-row>\n\n      <ion-row>\n        <ion-item>\n          <ion-label><ion-icon floating name="happy"></ion-icon></ion-label>\n          <ion-input type="text" placeholder="Full Name" [(ngModel)]="userData.name" block outline></ion-input>\n        </ion-item>\n      </ion-row>\n\n      <ion-row>\n        <ion-item>\n          <ion-label><ion-icon floating name="mail"></ion-icon></ion-label>\n          <ion-input type="text" placeholder="Email Address" [(ngModel)]="userData.email" block outline></ion-input>\n        </ion-item>\n      </ion-row>\n\n      <ion-row>\n        <ion-item>\n          <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>\n          <ion-input class="text" type="Password" placeholder="Password" [(ngModel)]="userData.password" block outline></ion-input>\n        </ion-item>\n      </ion-row>\n\n      <ion-row>\n        <ion-item>\n          <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>\n          <ion-input class="text" type="Password" placeholder="Confirm Password" [(ngModel)]="userData.cfmpassword" block outline></ion-input>\n        </ion-item>\n      </ion-row>\n\n      <ion-row>\n        <ion-label color="danger" class="errormsg">{{error}}</ion-label>\n      </ion-row>\n\n      <ion-row>\n          <button ion-button class="btn" (click)="registerUser()" color="light" block>Register</button>\n      </ion-row>\n\n\n    </ion-card-content>\n  </ion-card>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\register\register.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_rest_rest__["a" /* RestProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _c || Object])
     ], RegisterPage);
     return RegisterPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=register.js.map
@@ -854,7 +894,6 @@ var AttendancePage = (function () {
         this.toastCtrl = toastCtrl;
         this.buttonText = ["I Have Arrived"];
         this.isDisabled = [false];
-        // constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public storage: Storage) {
         this.setData();
         this.getSecret();
     }
@@ -880,8 +919,14 @@ var AttendancePage = (function () {
             _this.user = val;
             _this.restProvider.getCurrentEvent(_this.eventstore.id, val)
                 .then(function (data) {
+                console.log("in");
                 console.log(data);
                 _this.events = data;
+                for (var i = 0; i < data[0].attendance.length; i++) {
+                    if (data[0].attendance[i].attendance == true) {
+                        _this.isDisabled[i] = true;
+                    }
+                }
             });
         });
     };
@@ -894,21 +939,22 @@ var AttendancePage = (function () {
             _this.minorVal = data[0].minor;
         });
     };
-    AttendancePage.prototype.setAttendance = function (id) {
+    AttendancePage.prototype.setAttendance = function (id, btnID) {
         var _this = this;
         this.restProvider.setAttendance({ eventdate: id, user: this.user })
             .then(function (data) {
             _this.marked = true;
-            _this.buttonText[0] = 'Attendance Marked';
-            //i think remove button and display attendance marked better when it is like marked
+            _this.buttonText[btnID] = 'Attendance Marked';
+            _this.isDisabled[btnID] = true;
             _this.toastCtrl.create({
                 message: "Attendance Marked",
                 duration: 3000
             }).present();
         });
     };
-    AttendancePage.prototype.onActionButtonClick = function (id) {
+    AttendancePage.prototype.onActionButtonClick = function (id, btnID) {
         var _this = this;
+        var beaconFound = false;
         this.ble.scan([], 5).subscribe(function (data) {
             //ALTBeacon uses 0xff to advertise
             var SERVICE_DATA_KEY = '0xff';
@@ -958,35 +1004,27 @@ var AttendancePage = (function () {
                     });
                     if (minor.length == 2)
                         minor = minor.replace(/^[0]/g, "");
-                    if (major == _this.majorVal) {
-                        console.log("correct major");
-                        console.log(_this.majorVal);
+                    if (secret == _this.secretVal && minor == _this.minorVal && major == _this.majorVal) {
+                        console.log("found " + secret + " db receive secret is" + _this.secretVal + " minor " + minor + " db receive minor is" + _this.minorVal + " major " + major + " db receive major is" + _this.majorVal);
+                        _this.setAttendance(id, btnID);
+                        beaconFound = true;
                     }
-                    if (minor == _this.minorVal) {
-                        console.log("correct major");
-                        console.log(_this.minorVal);
-                    }
-                    if (secret == _this.secretVal) {
-                        console.log("correct secret");
-                        console.log(_this.secretVal);
-                    }
-                    if (_this.secretVal == "79") {
-                        _this.setAttendance(id);
-                    }
-                    //check Minor if it is correct
-                    console.log("Minor is " + minor);
-                    //check Major if it is correct
-                    console.log("Major is " + major);
-                    //check secreit if it is correct
-                    console.log("Secret is " + secret);
                 }
+                //check Minor if it is correct
+                console.log("Minor is " + minor);
+                //check Major if it is correct
+                console.log("Major is " + major);
+                //check secreit if it is correct
+                console.log("Secret is " + secret);
+            }
+        }, function (err) { }, function () {
+            if (beaconFound == false) {
+                _this.toastCtrl.create({
+                    message: "Unable to mark attendance, try moving closer to contact person or inform contact person.",
+                    duration: 5000
+                }).present();
             }
         });
-        // this.buttonText = "Stop Scan";
-        // }
-        // else {
-        //   this.buttonText = "Scan";
-        // }
     };
     AttendancePage.prototype.asHexString = function (i) {
         var hex;
@@ -1015,7 +1053,7 @@ var AttendancePage = (function () {
     };
     AttendancePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-attendance',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/'<!--\n  Generated template for the attendancePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Attendance</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-row>\n    <ion-col>\n      <ion-title>{{eventstore.event_name}} Dates</ion-title>\n    </ion-col>\n  </ion-row>\n\n  <ion-card *ngFor="let evt of events; let i = index">\n  <ion-card-content>\n    <ion-row>\n      <ion-col>\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n          <button ion-button (click)="onActionButtonClick(evt.id)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>\n        </ion-col>\n    </ion-row>\n  </ion-card-content>\n</ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/,
+            selector: 'page-attendance',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/'<!--\n  Generated template for the attendancePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Attendance</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-row>\n    <ion-col>\n      <ion-title>{{eventstore.event_name}} Dates</ion-title>\n    </ion-col>\n  </ion-row>\n\n  <ion-card *ngFor="let evt of events; let i = index">\n  <ion-card-content>\n    <ion-row>\n      <ion-col>\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n          <button ion-button (click)="onActionButtonClick(evt.id,i)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>\n        </ion-col>\n    </ion-row>\n  </ion-card-content>\n</ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],
@@ -1711,8 +1749,8 @@ var LoginPage = (function () {
     }
     LoginPage.prototype.signIn = function () {
         var _this = this;
-        this.restProvider.signIn(this.userData).then(function (result) {
-            console.log(result);
+        this.restProvider.postSignIn(this.userData).then(function (result) {
+            // console.log(result);
             _this.saveData(result);
             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
         }, function (err) {
@@ -1721,7 +1759,6 @@ var LoginPage = (function () {
     };
     LoginPage.prototype.saveData = function (result) {
         var _this = this;
-        console.log(result.user.isadmin);
         this.storage.set('api_token', result.user.api_token);
         this.storage.set('isadmin', result.user.isadmin).then(function (value) {
             _this.storage.get('isadmin').then(function (val) {

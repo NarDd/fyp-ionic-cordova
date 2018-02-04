@@ -19,31 +19,86 @@
 
   <!-- <p class="ptxt">or</p> -->
 
-  <div class="divclass">
 
-  <ion-item>
-    <ion-label><ion-icon floating name="mail"></ion-icon></ion-label>
-    <ion-input type="text" placeholder="Email Address" [(ngModel)]="userData.email" block outline></ion-input>
-  </ion-item>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>
+        Registration
+      </ion-card-title>
 
-  <ion-item>
-    <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>
-    <ion-input class="text" type="Password" placeholder="Password" [(ngModel)]="userData.password" block outline></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>
-    <ion-input class="text" type="Password" placeholder="Password"  [(ngModel)]="userData.cfmpassword" block outline></ion-input>
-  </ion-item>
+      <ion-row>
+        <ion-item>
+          <ion-label>Corporate Account?</ion-label>
+          <ion-checkbox [(ngModel)]="userData.corporate" ></ion-checkbox>
+        </ion-item>
+      </ion-row>
+      <br>
 
-  <ion-item>
-    <ion-label><ion-icon floating name="happy"></ion-icon></ion-label>
-    <ion-input type="text" placeholder="Full Name" [(ngModel)]="userData.name" block outline></ion-input>
-  </ion-item>
+      <ion-row>
+        <ion-item *ngIf="userData.corporate">
+        <ion-label>Select Company</ion-label>
+        <ion-select [(ngModel)]="userData.company">
+            <ion-option *ngFor="let companynames of companies" [value]="companynames.id">{{companynames.name}}</ion-option>
+        </ion-select>
+        </ion-item>
+      </ion-row>
 
-  </div>
-  <br>
-  <ion-label color="danger" class="errormsg">{{error}}</ion-label>
-  <br>
-  <button ion-button class="btn" (click)="registerUser()" color="light" block>Register</button>
+      <ion-row>
+        <ion-item>
+          <ion-label><ion-icon floating name="happy"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Full Name" [(ngModel)]="userData.name" block outline></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item>
+          <ion-label><ion-icon floating name="mail"></ion-icon></ion-label>
+          <ion-input type="text" placeholder="Email Address" [(ngModel)]="userData.email" block outline></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item>
+          <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>
+          <ion-input class="text" type="Password" placeholder="Password" [(ngModel)]="userData.password" block outline></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-item>
+          <ion-label><ion-icon floating name="lock"></ion-icon></ion-label>
+          <ion-input class="text" type="Password" placeholder="Confirm Password" [(ngModel)]="userData.cfmpassword" block outline></ion-input>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <ion-label color="danger" class="errormsg">{{error}}</ion-label>
+      </ion-row>
+
+      <ion-row>
+          <button ion-button class="btn" (click)="registerUser()" color="light" block>Register</button>
+      </ion-row>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ion-content>

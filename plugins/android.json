@@ -28,10 +28,10 @@
     "cordova-plugin-x-toast": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-altbeacon": {
+    "cordova-plugin-ble-central": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-ble-central": {
+    "cordova-plugin-altbeacon-marking": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },

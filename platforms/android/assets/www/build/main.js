@@ -854,7 +854,6 @@ var AttendancePage = (function () {
         this.toastCtrl = toastCtrl;
         this.buttonText = ["I Have Arrived"];
         this.isDisabled = [false];
-        // constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider, public storage: Storage) {
         this.setData();
         this.getSecret();
     }
@@ -880,8 +879,15 @@ var AttendancePage = (function () {
             _this.user = val;
             _this.restProvider.getCurrentEvent(_this.eventstore.id, val)
                 .then(function (data) {
+                console.log("in");
                 console.log(data);
                 _this.events = data;
+                var limit = data[0].attendance.length;
+                for (var i = 0; i < data[0].attendance.length; i++) {
+                    if (data[0].attendance[i].attendance == true) {
+                        _this.isDisabled[i] = true;
+                    }
+                }
             });
         });
     };
@@ -894,21 +900,22 @@ var AttendancePage = (function () {
             _this.minorVal = data[0].minor;
         });
     };
-    AttendancePage.prototype.setAttendance = function (id) {
+    AttendancePage.prototype.setAttendance = function (id, btnID) {
         var _this = this;
         this.restProvider.setAttendance({ eventdate: id, user: this.user })
             .then(function (data) {
             _this.marked = true;
-            _this.buttonText[0] = 'Attendance Marked';
-            //i think remove button and display attendance marked better when it is like marked
+            _this.buttonText[btnID] = 'Attendance Marked';
+            _this.isDisabled[btnID] = true;
             _this.toastCtrl.create({
                 message: "Attendance Marked",
                 duration: 3000
             }).present();
         });
     };
-    AttendancePage.prototype.onActionButtonClick = function (id) {
+    AttendancePage.prototype.onActionButtonClick = function (id, btnID) {
         var _this = this;
+        var beaconFound = false;
         this.ble.scan([], 5).subscribe(function (data) {
             //ALTBeacon uses 0xff to advertise
             var SERVICE_DATA_KEY = '0xff';
@@ -958,35 +965,27 @@ var AttendancePage = (function () {
                     });
                     if (minor.length == 2)
                         minor = minor.replace(/^[0]/g, "");
-                    if (major == _this.majorVal) {
-                        console.log("correct major");
-                        console.log(_this.majorVal);
+                    if (secret == _this.secretVal && minor == _this.minorVal && major == _this.majorVal) {
+                        console.log("found " + secret + " db receive secret is" + _this.secretVal + " minor " + minor + " db receive minor is" + _this.minorVal + " major " + major + " db receive major is" + _this.majorVal);
+                        _this.setAttendance(id, btnID);
+                        beaconFound = true;
                     }
-                    if (minor == _this.minorVal) {
-                        console.log("correct major");
-                        console.log(_this.minorVal);
-                    }
-                    if (secret == _this.secretVal) {
-                        console.log("correct secret");
-                        console.log(_this.secretVal);
-                    }
-                    if (_this.secretVal == "79") {
-                        _this.setAttendance(id);
-                    }
-                    //check Minor if it is correct
-                    console.log("Minor is " + minor);
-                    //check Major if it is correct
-                    console.log("Major is " + major);
-                    //check secreit if it is correct
-                    console.log("Secret is " + secret);
                 }
+                //check Minor if it is correct
+                console.log("Minor is " + minor);
+                //check Major if it is correct
+                console.log("Major is " + major);
+                //check secreit if it is correct
+                console.log("Secret is " + secret);
+            }
+        }, function (err) { }, function () {
+            if (beaconFound == false) {
+                _this.toastCtrl.create({
+                    message: "Unable to mark attendance, try moving closer to contact person or inform contact person.",
+                    duration: 5000
+                }).present();
             }
         });
-        // this.buttonText = "Stop Scan";
-        // }
-        // else {
-        //   this.buttonText = "Scan";
-        // }
     };
     AttendancePage.prototype.asHexString = function (i) {
         var hex;
@@ -1015,7 +1014,7 @@ var AttendancePage = (function () {
     };
     AttendancePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-attendance',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/'<!--\n  Generated template for the attendancePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Attendance</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-row>\n    <ion-col>\n      <ion-title>{{eventstore.event_name}} Dates</ion-title>\n    </ion-col>\n  </ion-row>\n\n  <ion-card *ngFor="let evt of events; let i = index">\n  <ion-card-content>\n    <ion-row>\n      <ion-col>\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n          <button ion-button (click)="onActionButtonClick(evt.id)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>\n        </ion-col>\n    </ion-row>\n  </ion-card-content>\n</ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/,
+            selector: 'page-attendance',template:/*ion-inline-start:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/'<!--\n  Generated template for the attendancePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Attendance</ion-title>\n    <ion-buttons end>\n    <button id="btn" (click)="presentProfileModal()">\n      <ion-icon name="contact" id="toProfile"></ion-icon>\n    </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-row>\n    <ion-col>\n      <ion-title>{{eventstore.event_name}} Dates</ion-title>\n    </ion-col>\n  </ion-row>\n\n  <ion-card *ngFor="let evt of events; let i = index">\n  <ion-card-content>\n    <ion-row>\n      <ion-col>\n        <span>Date: {{evt.date}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col>\n        <span>Time: {{evt.from_time}} to {{evt.to_time}}</span>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n        <ion-col>\n          <button ion-button (click)="onActionButtonClick(evt.id,i)" [disabled]="isDisabled[i]" block>{{ buttonText[i] }}</button>\n        </ion-col>\n    </ion-row>\n  </ion-card-content>\n</ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\Bernard\Desktop\fyp-ionic\fyp\src\pages\attendance\attendance.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* ModalController */],

@@ -15,9 +15,68 @@ export class RestProvider {
   constructor(public http: Http, public toastCtrl: ToastController) {
     console.log('Hello RestProvider Provider');
   }
-  apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
-  // apiUrl = 'http://nard.site/api/';
+  // apiUrl = 'http://bernard.southeastasia.cloudapp.azure.com/api/';
+  apiUrl = 'http://nard.site/api/';
   error : any;
+
+//Before Login
+  postSignIn(user: any) {
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl+'signin',
+      {
+        email : user.email,
+        password : user.password
+      }).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      }, err => {
+        this.error = JSON.parse(err._body);
+        this.toastCtrl.create({
+          message: this.error.errors,
+          duration: 3000
+        }).present();
+      });
+    });
+  }
+
+  getCompanies() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'companies').map(res => res.json()).subscribe(data => {
+        resolve(data);
+      }, err => {
+        this.toastCtrl.create({
+          message: "An Error Has Occured",
+          duration: 3000
+        }).present();
+      });
+    });
+  }
+
+//Get Event Pages
+  getUpcoming(user_id : any) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'upcoming' + "/" + user_id).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      }, err => {
+        this.toastCtrl.create({
+          message: "An Error Has Occured",
+          duration: 3000
+        }).present();
+      });
+    });
+  }
+
+  getPastEvents(user_id : any) {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'pastevents' + "/" + user_id).map(res => res.json()).subscribe(data => {
+        resolve(data);
+      }, err => {
+        this.toastCtrl.create({
+          message: "An Error Has Occured",
+          duration: 3000
+        }).present();
+      });
+    });
+  }
 
   postUndoMarked(present: any, eventid : any) {
     return new Promise(resolve => {
@@ -62,18 +121,7 @@ export class RestProvider {
     });
   }
 
-  getUpcoming() {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl+'upcoming').map(res => res.json()).subscribe(data => {
-        resolve(data);
-      }, err => {
-        this.toastCtrl.create({
-          message: "An Error Has Occured",
-          duration: 3000
-        }).present();
-      });
-    });
-  }
+
 
   getSecret(id) {
     return new Promise(resolve => {
@@ -102,18 +150,7 @@ export class RestProvider {
     });
   }
 
-  getPastEvent() {
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl+'pastevents').map(res => res.json()).subscribe(data => {
-        resolve(data);
-      }, err => {
-        this.toastCtrl.create({
-          message: "An Error Has Occured",
-          duration: 3000
-        }).present();
-      });
-    });
-  }
+
 
   register(userData: any){
     return new Promise(resolve => {
@@ -121,7 +158,9 @@ export class RestProvider {
       {
         email : userData.email,
         password : userData.password,
-        name : userData.name
+        name : userData.name,
+        corporate: userData.corporate,
+        company: userData.company,
       }).map(res => res.json()).subscribe(data => {
         resolve(data);
       }, err => {
@@ -226,24 +265,7 @@ export class RestProvider {
     });
   }
 
-  signIn(user: any) {
-    console.log(user);
-    return new Promise(resolve => {
-      this.http.post(this.apiUrl+'signin',
-      {
-        email : user.email,
-        password : user.password
-      }).map(res => res.json()).subscribe(data => {
-        resolve(data);
-      }, err => {
-        this.error = JSON.parse(err._body);
-        this.toastCtrl.create({
-          message: this.error.errors,
-          duration: 3000
-        }).present();
-      });
-    });
-  }
+
 
   getUser(val){
     return new Promise(resolve => {

@@ -25,7 +25,7 @@
     <feature name="Toast">
         <param name="android-package" value="nl.xservices.plugins.Toast" />
     </feature>
-    <feature name="cordova-plugin-altbeacon">
+    <feature name="cordova-plugin-altbeacon-marking">
         <param name="android-package" value="com.bernard.BLETransmitter" />
         <param name="onload" value="true" />
     </feature>

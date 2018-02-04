@@ -86,7 +86,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
     <plugin name="cordova-plugin-statusbar" spec="^2.3.0" />
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
-    <plugin name="cordova-plugin-altbeacon" spec="../../cordova-plugin-altbeacon" />
     <engine name="android" spec="~6.3.0" />
     <plugin name="cordova-plugin-ble-central" spec="^1.1.4" />
+    <plugin name="cordova-plugin-altbeacon-marking" spec="0.0.2" />
 </widget>

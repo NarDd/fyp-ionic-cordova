@@ -42,8 +42,8 @@ export class LoginPage {
   }
 
   signIn(){
-    this.restProvider.signIn(this.userData).then((result) => {
-      console.log(result);
+    this.restProvider.postSignIn(this.userData).then((result) => {
+      // console.log(result);
       this.saveData(result);
       this.navCtrl.setRoot(HomePage);
     }, (err) => {
@@ -53,14 +53,12 @@ export class LoginPage {
   }
 
   saveData(result){
-    console.log(result.user.isadmin);
     this.storage.set('api_token',result.user.api_token);
     this.storage.set('isadmin', result.user.isadmin).then((value) => {
       this.storage.get('isadmin').then((val) => {
         console.log('Your isadmin is', val);
       });
     });
-
     this.storage.set('user_id', result.user.id);
   }
 

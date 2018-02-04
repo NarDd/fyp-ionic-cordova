@@ -27,6 +27,28 @@ export class UpcomingPage {
     this.getUpcoming();
   }
 
+  getUpcoming() {
+    this.storage.get('user_id').then((val) => {
+      this.restProvider.getUpcoming(val)
+      .then(data => {
+        this.events = data;
+        console.log(this.events);
+      });
+    });
+  }
+
+  showHomePage(){
+    this.navCtrl.push(HomePage);
+  }
+
+  viewEvent(evt){
+    console.log(evt);
+    this.navCtrl.push(EventPage, {
+      evt: evt,
+      expired: true
+    });
+  }
+
   presentProfileModal() {
     this.storage.get('user_id').then((val) => {
       this.restProvider.getUser(val)
@@ -36,30 +58,6 @@ export class UpcomingPage {
         let profileModal = this.modalCtrl.create(ProfilePage, {userData: userData});
         profileModal.present();
       });
-    });
-  }
-
-
-  getUpcoming() {
-    this.restProvider.getUpcoming()
-    .then(data => {
-      this.events = data;
-      console.log(this.events);
-    });
-  }
-
-  showHomePage(){
-    this.navCtrl.push(HomePage);
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UpcomingPage');
-  }
-
-  viewEvent(evt){
-    console.log(evt);
-    this.navCtrl.push(EventPage, {
-      evt: evt,
-      expired: true
     });
   }
 

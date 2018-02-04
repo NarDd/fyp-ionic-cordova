@@ -50,23 +50,6 @@ public class BLETransmitter extends CordovaPlugin  {
       Long secret = Long.parseLong("" + num);
       String major = args.getString(1);
       String minor = args.getString(2);
-
-
-      // final String arg0 = args.getString(0);
-      // final long secret = 9;
-      //
-      // final String major = args.getString(1);
-      // final String minor = args.getString(2);
-      // final JSONArray obj = args.getJSONArray(0);
-      // final String obj = args.getJSONObject(0).toString();
-      // callbackContext.success("the major" + obj.get(1));
-      // Log.i("OBJ MOFO", "obj is " + obj.get(1));
-      // final String major = args.getJSONObject(1).toString();
-      // final String major = majorObj.toString();
-      // final String minor = args.getJSONObject(2).toString();
-      // final String minor = minorObj.toString();
-      // callbackContext.success("the major and minor is " + major + " " + minor);
-
       start(callbackContext,secret,major,minor);
       return true;
     }
